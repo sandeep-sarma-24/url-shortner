@@ -1,0 +1,127 @@
+/* Home.css */
+
+body, html {
+  margin: 0;
+  padding: 0;
+  box-sizing: border-box;
+}
+
+.nav-bar {
+  width: 1900px; /* Adjusted width to fit the screen */
+}
+
+/* Style for the App container */
+.App {
+    text-align: center;
+    background: url('../assets/wallpaper.jpg') no-repeat center center fixed;
+    background-size: cover;
+    min-height: 100vh;
+    display: flex;
+    flex-direction: column;
+    justify-content: center;
+    align-items: center;
+    color: white;
+    font-family: Arial, sans-serif;
+}
+
+/* Isolated image container styling */
+.image-container {
+    width: 100%;
+    display: flex;
+    justify-content: center;
+}
+
+/* Specific styling for the logo image */
+.logo-image {
+    max-width: 800px;
+    border-radius: 10px;
+    margin: 10px;
+}
+
+/* Style for the input field */
+.url-input {
+    width: 500px;
+    padding: 10px;
+    margin: 10px;
+    background-color: #0000004a;
+    color: white;
+    border-radius: 10px;
+}
+
+.url-input:focus {
+  outline: none;
+}
+
+/* Button container and buttons styling */
+.buttons {
+    display: flex;
+    gap: 10px;
+    align-items: center;
+    justify-content: center;
+}
+
+.shorten-button, .stats-button {
+    padding: 10px 20px;
+    border: 1px solid black;
+    border-radius: 5px;
+    background: #0000004a;
+    color: white;
+    font-weight: bold;
+    cursor: pointer;
+}
+
+.shorten-button:hover, .stats-button:hover {
+    background: #3030398f;
+}
+
+/* Style for social icons container */
+.social-icons {
+    display: flex;
+    flex-direction: row; 
+    gap: 15px;
+    justify-content: center;
+    align-items: center; 
+    margin-top: 30px;
+}
+
+.social-icons > * {
+    font-size: 2rem;
+    cursor: pointer;
+}
+
+/* Style for the shortened URL container */
+.short-url-container {
+    margin-top: 20px;
+}
+
+.short-url {
+    background-color: #0000004a;
+    padding: 10px;
+    border-radius: 5px;
+    color: white;
+    word-break: break-all;
+    margin: 10px;
+}
+
+/* Style for the copy button */
+.copy-button {
+    padding: 3px 10px;
+    background-color: #3030398f;
+    border: none;
+    color: white;
+    border-radius: 5px;
+    cursor: pointer;
+}
+
+.copy-button:hover {
+    background-color: #303039;
+}
+
+/* Style for the copied message */
+.copied-message {
+    color: #83e583;
+    font-weight: 500;
+    background-color: #0000004a;
+    padding: 5px;
+    margin: 10px;
+}
