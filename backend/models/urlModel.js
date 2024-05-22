@@ -46,7 +46,9 @@ exports.shorten = async (longUrl, userIp, expireAt) => {
         console.log('User IP:', userIp);
         console.log('Expiration time:', expireAt);
 
-        const response = await axios.post('http://localhost:8080/api/shorten', {
+	const cleanedUserIp = userIp.replace(/^::ffff:/, '');
+
+        const response = await axios.post('http://52.13.22.149:8080/api/shorten', {
             long_url: longUrl
         }, {
             headers: {
@@ -59,12 +61,11 @@ exports.shorten = async (longUrl, userIp, expireAt) => {
         const shortUrl = response.data.short_url;
 
         const query = 'INSERT INTO urls (long_url, short_url, user_ip, expire_at) VALUES ($1, $2, $3, $4) RETURNING *';
-        const values = [longUrl, shortUrl, userIp, expireAt];
-
+        const values = [longUrl, shortUrl, cleanedUserIp, expireAt];
         const result = await pool.query(query, values);
 
         // Update URL request count for user IP
-        await updateUrlRequestCount(userIp);
+        await updateUrlRequestCount(cleanedUserIp);
 
         console.log('URL inserted into database:', result.rows[0]);
         return result.rows[0];

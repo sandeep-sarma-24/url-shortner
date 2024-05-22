@@ -5,6 +5,7 @@ import (
 	"encoding/hex"
 	"fmt"
 	"github.com/gin-gonic/gin"
+        "github.com/gin-contrib/cors"
 	"github.com/joho/godotenv"
 	"net/http"
 	"os"
@@ -71,6 +72,7 @@ func (s *URLService) longToShort(longURL string) string {
 }
 
 func main() {
+
 	// Load environment variables from .env file
 	if err := godotenv.Load(); err != nil {
 		fmt.Println("Error loading .env file")
@@ -79,6 +81,14 @@ func main() {
 	service := NewURLService()
 
 	r := gin.Default()
+	r.Use(cors.New(cors.Config{
+        AllowOrigins:     []string{"http://52.13.22.149:5173", "http://52.13.22.149:3000"},
+        AllowMethods:     []string{"GET", "POST", "PUT", "PATCH", "DELETE"},
+        AllowHeaders:     []string{"Origin", "Content-Type", "Authorization"},
+        ExposeHeaders:    []string{"Content-Length"},
+        AllowCredentials: true,
+        MaxAge:           12 * time.Hour,
+        }))
 
 	r.POST("/api/shorten", func(c *gin.Context) {
 		var req struct {

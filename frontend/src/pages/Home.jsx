@@ -22,14 +22,14 @@ const Home = () => {
 
     try {
 
-      const response = await fetch('http://localhost:3000/api/shorten', {
+      const response = await fetch('http://52.13.22.149:3000/api/shorten', {
         method: 'POST',
         headers: {
           'Content-Type': 'application/json'
         },
         body: JSON.stringify({
           long_url: url,
-          expire_at: '2024-05-20T23:45:00Z'
+          expire_at: '2024-06-20T23:45:00Z'
         })
       });
 
